@@ -1,0 +1,13 @@
+{
+  "name": "my-unityads",
+  "url": "",
+  "license": "MIT",
+  "tags": ["cross","openfl","ads","unity"],
+  "description": "UnityAds Implementation for OpenFL/Haxe",
+  "version": "2.0.0",
+  "releasenote": "Updating SDK to 1.5.6",
+  "contributors": ["ipsilondev"],
+  "dependencies": {
+
+  }
+}
