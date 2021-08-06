@@ -13,6 +13,11 @@ import openfl.utils.JNI;
 
 class UnityAds {
 
+	public static var unityAdsShowStart:String->Void = null;
+	public static var unityAdsShowFailed:String->Void = null;
+	public static var unityAdsShowClick:String->Void = null;
+	public static var unityAdsShowComplete:String->Void = null;
+
 	public static var instance:UnityAds = null;
 	public static function init(gameId:String, test:Bool=false, debug:Bool=false):Void {
 		libInit(getInstance(), gameId, test, debug);
@@ -31,10 +36,10 @@ class UnityAds {
 	JNI.createStaticMethod("com/ipsilondev/UnityAdsWrapper","init","(Lorg/haxe/lime/HaxeObject;Ljava/lang/String;ZZ)V");
 	#elseif ios
 	function(o:UnityAds, s:String, b1:Bool, b2:Bool):Void {
-		unityAdsShowComplete1(getInstance().unityAdsShowComplete);
-		unityAdsShowFailed1(getInstance().unityAdsShowFailed);
-		unityAdsShowStart1(getInstance().unityAdsShowStart);
-		unityAdsShowClick1(getInstance().unityAdsShowClick);
+		unityAdsShowComplete1(getInstance().unityAdsShowComplete2);
+		unityAdsShowFailed1(getInstance().unityAdsShowFailed2);
+		unityAdsShowStart1(getInstance().unityAdsShowStart2);
+		unityAdsShowClick1(getInstance().unityAdsShowClick2);
 		iosInit(o,s,b1,b2);		
 	};
 	#else
@@ -84,22 +89,22 @@ class UnityAds {
 		
 	}
 	
-	public function unityAdsShowComplete(keyId:String):Void {
+	public function unityAdsShowComplete2(keyId:String):Void {
 		if (unityAdsShowComplete != null) {
 			unityAdsShowComplete(keyId);
 		}
 	}
-	public function unityAdsShowFailed(keyId:String):Void {
+	public function unityAdsShowFailed2(keyId:String):Void {
 		if (unityAdsShowFailed != null) {
 			unityAdsShowFailed(keyId);
 		}
 	}
-	public function unityAdsShowStart(keyId:String):Void {
+	public function unityAdsShowStart2(keyId:String):Void {
 		if (unityAdsShowStart != null) {
 			unityAdsShowStart(keyId);
 		}
 	}
-	public function unityAdsShowClick(keyId:String):Void {
+	public function unityAdsShowClick2(keyId:String):Void {
 		if (unityAdsShowClick != null) {
 			unityAdsShowClick(keyId);
 		}
